@@ -52,7 +52,7 @@ app.get('/weather', (req, res) => {
    
     getWeatherData(req.query.address).then(data => {
         return res.send({
-            forecast: data[0].current.temp + '\u00B0' + ', ' + data[0].current.weather[0].description,
+            forecast: `${data[0].current.weather[0].description} ${data[0].current.temp}\u00B0, Feels like: ${data[0].current.feels_like}\u00B0, Humidity: ${data[0].current.humidity}%`,
             location: data[1],
             address: req.query.address
         })
